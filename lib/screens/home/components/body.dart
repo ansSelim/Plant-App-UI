@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plantappui/constants.dart';
 
+import 'header_with_seachbox.dart';
+
 
 class Body extends StatelessWidget {
   @override
@@ -12,7 +14,12 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: kDefaultPadding),
+          HeaderWithSearchBox(size: size),
+          // TitleWithMoreBtn(title: "Recomended", press: () {}),
+          // RecomendsPlants(),
+          // TitleWithMoreBtn(title: "Featured Plants", press: () {}),
+          // FeaturedPlants(),
+          const SizedBox(height: kDefaultPadding),
         ],
       ),
     );
