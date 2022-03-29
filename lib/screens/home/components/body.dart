@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plantappui/constants.dart';
 
 import 'header_with_seachbox.dart';
+import 'title_with_more_bbtn.dart';
 
 
 class Body extends StatelessWidget {
@@ -15,7 +16,7 @@ class Body extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           HeaderWithSearchBox(size: size),
-          // TitleWithMoreBtn(title: "Recomended", press: () {}),
+          TitleWithMoreBtn(title: "Recomended", press: () {}),
           // RecomendsPlants(),
           // TitleWithMoreBtn(title: "Featured Plants", press: () {}),
           // FeaturedPlants(),
