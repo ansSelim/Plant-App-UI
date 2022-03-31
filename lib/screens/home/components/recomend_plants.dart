@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
+import '../../details/details_screen.dart';
 
 class RecomendsPlants extends StatelessWidget {
   const RecomendsPlants({
@@ -19,12 +20,13 @@ class RecomendsPlants extends StatelessWidget {
             country: "Russia",
             price: 440,
             press: () {
-          /* todo  Navigator.push(
+              print('asdasd');
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
+                  builder: (context) => const DetailsScreen(),
                 ),
-              );*/
+              );
             },
           ),
           RecomendPlantCard(
@@ -33,12 +35,12 @@ class RecomendsPlants extends StatelessWidget {
             country: "Russia",
             price: 440,
             press: () {
-              //todo Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => DetailsScreen(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
             },
           ),
           RecomendPlantCard(
@@ -58,10 +60,10 @@ class RecomendPlantCard extends StatelessWidget {
   const RecomendPlantCard({
     Key? key,
     required this.image,
-    required  this.title,
-    required  this.country,
+    required this.title,
+    required this.country,
     required this.price,
-    required  this.press,
+    required this.press,
   }) : super(key: key);
 
   final String image, title, country;
@@ -71,64 +73,69 @@ class RecomendPlantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: const EdgeInsets.only(
-        left: kDefaultPadding,
-        top: kDefaultPadding / 2,
-        bottom: kDefaultPadding * 2.5,
-      ),
-      width: size.width * 0.4,
-      child: Column(
-        children: <Widget>[
-          Image.asset(image),
-          GestureDetector(
-            onTap: () =>press,
-            child: Container(
-              padding: const EdgeInsets.all(kDefaultPadding / 2),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: kPrimaryColor.withOpacity(0.23),
+    return InkWell(
+      onTap: (){ press();},
+      child: Container(
+        margin: const EdgeInsets.only(
+          left: kDefaultPadding,
+          top: kDefaultPadding / 2,
+          bottom: kDefaultPadding * 2.5,
+        ),
+        width: size.width * 0.4,
+        child: Column(
+          children: <Widget>[
+            Image.asset(image),
+            GestureDetector(
+              onTap: () {
+                press();
+              },
+              child: Container(
+                padding: const EdgeInsets.all(kDefaultPadding / 2),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
                   ),
-                ],
-              ),
-              child: Row(
-                children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: "$title\n".toUpperCase(),
-                            style: Theme.of(context).textTheme.button),
-                        TextSpan(
-                          text: country.toUpperCase(),
-                          style: TextStyle(
-                            color: kPrimaryColor.withOpacity(0.5),
-                          ),
-                        ),
-                      ],
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 50,
+                      color: kPrimaryColor.withOpacity(0.23),
                     ),
-                  ),
-                  Spacer(),
-                  Text(
-                    '\$$price',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button!
-                        .copyWith(color: kPrimaryColor),
-                  )
-                ],
+                  ],
+                ),
+                child: Row(
+                  children: <Widget>[
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "$title\n".toUpperCase(),
+                              style: Theme.of(context).textTheme.button),
+                          TextSpan(
+                            text: country.toUpperCase(),
+                            style: TextStyle(
+                              color: kPrimaryColor.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      '\$$price',
+                      style: Theme.of(context)
+                          .textTheme
+                          .button!
+                          .copyWith(color: kPrimaryColor),
+                    )
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
